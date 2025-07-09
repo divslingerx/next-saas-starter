@@ -117,7 +117,7 @@ export const auth = betterAuth({
               process.env.NODE_ENV === "development"
                 ? `http://localhost:3000/accept-invitation/${data.id}`
                 : `${
-                    process.env.BETTER_AUTH_URL ||
+                    process.env.BETTER_AUTH_URL ??
                     "https://demo.better-auth.com"
                   }/accept-invitation/${data.id}`,
           }),
