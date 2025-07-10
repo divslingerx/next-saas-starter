@@ -6,27 +6,36 @@ import { Switch } from "@/components/ui/switch";
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import confetti from "canvas-confetti";
+
+// Add type for confetti if missing
+
+// If you have @types/canvas-confetti installed, remove the above line
 import NumberFlow from "@number-flow/react";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, Star } from "lucide-react";
 import { client } from "@/lib/auth-client";
 
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(false);
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia(query).matches;
+    }
+    return false; // Default for SSR
+  });
 
   useEffect(() => {
     const media = window.matchMedia(query);
+
     if (media.matches !== matches) {
       setMatches(media.matches);
     }
 
-    const listener = () => setMatches(media.matches);
-    media.addListener(listener);
+    const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
+    media.addEventListener("change", listener);
 
-    return () => media.removeListener(listener);
-  }, [query]);
+    return () => media.removeEventListener("change", listener);
+  }, [query, matches]);
 
   return matches;
 }

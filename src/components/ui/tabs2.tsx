@@ -136,7 +136,7 @@ export const FadeInDiv = ({
             },
           }}
           className={cn(
-            "h-full w-50",
+            "h-full w-full",
             isActive(tab) ? "" : "hidden",
             className,
           )}

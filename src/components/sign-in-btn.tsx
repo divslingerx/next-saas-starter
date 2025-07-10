@@ -44,7 +44,7 @@ export async function SignInButton() {
 
 function checkOptimisticSession(headers: Headers) {
   const guessIsSignIn =
-    headers.get("cookie")?.includes("better-auth.session") ||
+    headers.get("cookie")?.includes("better-auth.session") ??
     headers.get("cookie")?.includes("__Secure-better-auth.session-token");
   return !!guessIsSignIn;
 }

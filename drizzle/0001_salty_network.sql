@@ -1,0 +1,2 @@
+ALTER TABLE "agency-app_post" ADD COLUMN "createdById" text;--> statement-breakpoint
+ALTER TABLE "agency-app_post" ADD CONSTRAINT "agency-app_post_createdById_user_id_fk" FOREIGN KEY ("createdById") REFERENCES "public"."user"("id") ON DELETE no action ON UPDATE no action;
