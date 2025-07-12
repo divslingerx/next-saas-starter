@@ -1,0 +1,40 @@
+{
+  "name": "@charmlabs/config",
+  "version": "0.0.1",
+  "private": true,
+  "files": [
+    "eslint",
+    "prettier",
+    "typescript",
+    "tailwind"
+  ],
+  "exports": {
+    "./eslint": "./eslint/index.js",
+    "./eslint/next": "./eslint/next.js",
+    "./eslint/base": "./eslint/base.js",
+    "./prettier": "./prettier/index.js",
+    "./typescript/base": "./typescript/base.json",
+    "./typescript/nextjs": "./typescript/nextjs.json",
+    "./typescript/react-library": "./typescript/react-library.json",
+    "./typescript/node": "./typescript/node.json",
+    "./tailwind": "./tailwind/index.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint-config-next": "^15.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0 || ^9.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,12 +1,15 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
     image: postgres:16-alpine
     container_name: agency-app-postgres
     environment:
+      # IMPORTANT: These values must match your DATABASE_URL in .env
+      # If you change DATABASE_URL, update these values accordingly
+      # DATABASE_URL format: postgresql://USER:PASSWORD@HOST:PORT/DATABASE
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: DSm3bB27AXzlznDA
       POSTGRES_DB: agency-app
     ports:
       - "5432:5432"

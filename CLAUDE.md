@@ -29,11 +29,11 @@ pnpm preview      # Build and start locally
 
 ### Database
 ```bash
-./start-database.sh   # Start local PostgreSQL in Docker/Podman
-pnpm db:generate      # Generate Drizzle migrations
-pnpm db:migrate       # Run migrations
-pnpm db:push          # Push schema changes
-pnpm db:studio        # Open Drizzle Studio
+docker-compose up -d postgres  # Start local PostgreSQL
+pnpm db:generate              # Generate Drizzle migrations
+pnpm db:migrate               # Run migrations
+pnpm db:push                  # Push schema changes
+pnpm db:studio                # Open Drizzle Studio
 ```
 
 ### Code Quality
@@ -85,7 +85,7 @@ pnpm auth:migrate     # Run auth migrations
 
 ## Development Workflow
 
-1. Ensure PostgreSQL is running: `./start-database.sh`
+1. Ensure PostgreSQL is running: `docker-compose up -d postgres`
 2. Set up environment variables: Copy `.env.example` to `.env` and fill in values
 3. Run database migrations: `pnpm db:migrate`
 4. Start development: `pnpm dev`

@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(pnpm db:generate:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pnpm add:*)",
+      "Bash(cp:*)",
+      "Bash(true)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(grep:*)",
+      "Bash(chmod:*)",
+      "Bash(./fix-broken-imports.sh:*)",
+      "Bash(rm:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "docfork",
+    "sequential-thinking",
+    "memory",
+    "mcp-compass",
+    "context7",
+    "fetch"
+  ]
+}

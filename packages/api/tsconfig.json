@@ -1,0 +1,14 @@
+{
+  "extends": "@charmlabs/config/typescript/node",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  },
+  "references": [
+    { "path": "../db" },
+    { "path": "../core" }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,9 @@
+packages:
+  # Core packages
+  - 'packages/*'
+  # Plugin packages
+  - 'plugins/*'
+  # Apps (Next.js app, admin dashboard, etc)
+  - 'apps/*'
+  # Internal tools
+  - 'tools/*'

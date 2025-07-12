@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+out
+
+# Environment files
+.env*
+
+# Cache
+.turbo
+.cache
+*.tsbuildinfo
+
+# Generated files
+pnpm-lock.yaml
+package-lock.json
+
+# Drizzle
+drizzle/meta
+drizzle/*.sql
