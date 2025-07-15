@@ -2,26 +2,30 @@
 
 # dependencies
 node_modules
-/.pnp
+.pnp
 .pnp.js
-.pnpm-debug.log*
 
 # testing
-/coverage
-
-# database
-/prisma/db.sqlite
-/prisma/db.sqlite-journal
-db.sqlite
+coverage
 
 # next.js
 .next/
 out/
 next-env.d.ts
 
+# nitro
+.nitro/
+.output/
+
+# expo
+.expo/
+expo-env.d.ts
+apps/expo/.gitignore
+apps/expo/ios
+apps/expo/android
+
 # production
 build
-dist
 
 # misc
 .DS_Store
@@ -34,7 +38,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-# do not commit any .env files to git, except for the .env.example file. https://create.t3.gg/en/usage/env-variables#using-environment-variables
 .env
 .env*.local
 
@@ -42,17 +45,8 @@ yarn-error.log*
 .vercel
 
 # typescript
-*.tsbuildinfo
+dist/
+.cache
 
 # turbo
 .turbo
-
-# ide
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-.idea
-
-# drizzle
-drizzle/meta/_journal.json
-drizzle/meta/*.snapshot.json

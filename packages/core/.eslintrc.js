@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["@charmlabs/config/eslint/base"],
+  extends: ["@charmlabs/eslint-config/base"],
   parserOptions: {
     project: "./tsconfig.json",
   },

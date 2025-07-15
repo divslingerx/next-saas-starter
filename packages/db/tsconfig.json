@@ -1,9 +1,5 @@
 {
-  "extends": "@charmlabs/config/typescript/node",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "extends": "@charmlabs/tsconfig/internal-package.json",
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

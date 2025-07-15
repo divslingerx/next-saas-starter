@@ -15,13 +15,15 @@
   },
   "dependencies": {
     "@charmlabs/core": "workspace:*",
-    "@charmlabs/ui": "workspace:*",
     "@charmlabs/ecom": "workspace:*",
+    "@charmlabs/ui": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@charmlabs/config": "workspace:*",
+    "@charmlabs/eslint-config": "workspace:*",
+    "@charmlabs/prettier-config": "workspace:*",
+    "@charmlabs/tsconfig": "workspace:*",
     "@types/react": "^19.0.6",
     "@types/react-dom": "^19.0.2",
     "typescript": "^5.8.2"

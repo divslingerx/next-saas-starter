@@ -1,29 +1,41 @@
 {
   "name": "@charmlabs/api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./client": "./src/client.ts",
-    "./server": "./src/server.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
   },
+  "license": "MIT",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@charmlabs/auth": "workspace:*",
     "@charmlabs/db": "workspace:*",
-    "@trpc/client": "^11.0.0",
-    "@trpc/server": "^11.0.0",
-    "@trpc/react-query": "^11.0.0",
-    "@tanstack/react-query": "^5.62.16",
-    "superjson": "^2.2.2",
-    "zod": "^3.25.76"
+    "@charmlabs/validators": "workspace:*",
+    "@tanstack/react-query": "catalog:",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "@trpc/tanstack-react-query": "catalog:",
+    "superjson": "2.2.2",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@charmlabs/config": "workspace:*",
-    "@types/node": "^22.10.5",
-    "typescript": "^5.8.2"
-  }
+    "@charmlabs/eslint-config": "workspace:*",
+    "@charmlabs/prettier-config": "workspace:*",
+    "@charmlabs/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@charmlabs/prettier-config"
 }

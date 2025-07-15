@@ -1,5 +1,5 @@
 {
-  "extends": "@charmlabs/config/typescript/react-library",
+  "extends": "@charmlabs/tsconfig/react-library",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src"

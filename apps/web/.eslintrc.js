@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["@charmlabs/config/eslint/next"],
+  extends: ["@charmlabs/eslint-config/next"],
   parserOptions: {
     project: "./tsconfig.json",
   },
