@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { cn } from "@charmlabs/ui";
-import { ThemeProvider, ThemeToggle } from "@charmlabs/ui/theme";
-import { Toaster } from "@charmlabs/ui/toast";
+import { Toaster } from "@charmlabs/ui/components/sonner";
+import { ThemeProvider, ThemeToggle } from "@charmlabs/ui/components/theme";
+import { cn } from "@charmlabs/ui/lib/utils";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
-import "~/app/globals.css";
+import "@charmlabs/ui/globals.css";
 
 import { env } from "~/env";
 

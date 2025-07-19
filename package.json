@@ -14,6 +14,7 @@
     "db:push": "turbo -F @charmlabs/db push",
     "db:studio": "turbo -F @charmlabs/db studio",
     "dev": "turbo watch dev --continue",
+    "dev:web": "turbo watch dev -F @charmlabs/nextjs... -F @charmlabs/admin...",
     "dev:next": "turbo watch dev -F @charmlabs/nextjs...",
     "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
     "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",

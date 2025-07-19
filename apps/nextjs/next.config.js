@@ -19,6 +19,20 @@ const config = {
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
+
+  /** Multi-zone configuration */
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: `${process.env.ADMIN_URL || "http://localhost:3001"}/admin`,
+      },
+      {
+        source: "/admin/:path*",
+        destination: `${process.env.ADMIN_URL || "http://localhost:3001"}/admin/:path*`,
+      },
+    ];
+  },
 };
 
 export default config;
