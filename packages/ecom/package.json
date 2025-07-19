@@ -15,7 +15,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@charmlabs/core": "workspace:*",
     "@charmlabs/db": "workspace:*",
     "drizzle-orm": "^0.44.1",
     "drizzle-zod": "^0.8.2",

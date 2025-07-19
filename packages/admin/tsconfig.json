@@ -1,9 +1,0 @@
-{
-  "extends": "@charmlabs/tsconfig/react-library",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}

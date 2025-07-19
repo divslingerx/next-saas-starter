@@ -11,5 +11,4 @@ export default {
   dialect: "postgresql",
   dbCredentials: { url: nonPoolingUrl },
   casing: "snake_case",
-  tablesFilter: ["agency-app_*"],
 } satisfies Config;

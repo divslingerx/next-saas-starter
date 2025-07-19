@@ -1,5 +1,2 @@
-export * from './schema';
-export * from './auth-schema';
-export { db } from './client';
-export { posts, createTable } from './schema';
-export type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+export * from "drizzle-orm/sql";
+export { alias } from "drizzle-orm/pg-core";

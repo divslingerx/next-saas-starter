@@ -4,18 +4,14 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "",
-    "__config": "../../tooling/tailwind/web.ts",
-    "css": "src/styles/globals.css",
+    "config": "../../tooling/tailwind/web.ts",
+    "css": "unused.css",
     "baseColor": "zinc",
     "cssVariables": true
   },
-  "iconLibrary": "lucide",
   "aliases": {
-    "components": "@charmlabs/ui/components",
-    "utils": "@charmlabs/ui/lib/utils",
-    "hooks": "@charmlabs/ui/hooks",
-    "lib": "@charmlabs/ui/lib",
-    "ui": "@charmlabs/ui/components"
+    "utils": "@charmlabs/ui",
+    "components": "src/",
+    "ui": "src/"
   }
 }

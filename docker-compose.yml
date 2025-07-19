@@ -3,7 +3,7 @@ version: "3.8"
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: agency-app-postgres
+    container_name: next-app-postgres
     environment:
       # IMPORTANT: These values must match your DATABASE_URL in .env
       # If you change DATABASE_URL, update these values accordingly
@@ -23,7 +23,7 @@ services:
 
   minio:
     image: minio/minio:latest
-    container_name: agency-app-minio
+    container_name: next-app-minio
     command: server /data --console-address ":9001"
     environment:
       MINIO_ROOT_USER: minioadmin

@@ -1,5 +1,24 @@
-export { appRouter } from './root';
-export type { AppRouter } from './root';
+import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
-export { createTRPCContext } from './trpc';
-export type { TRPCContext } from './trpc';
+import type { AppRouter } from "./root";
+import { appRouter } from "./root";
+import { createTRPCContext } from "./trpc";
+
+/**
+ * Inference helpers for input types
+ * @example
+ * type PostByIdInput = RouterInputs['post']['byId']
+ *      ^? { id: number }
+ **/
+type RouterInputs = inferRouterInputs<AppRouter>;
+
+/**
+ * Inference helpers for output types
+ * @example
+ * type AllPostsOutput = RouterOutputs['post']['all']
+ *      ^? Post[]
+ **/
+type RouterOutputs = inferRouterOutputs<AppRouter>;
+
+export { createTRPCContext, appRouter };
+export type { AppRouter, RouterInputs, RouterOutputs };
