@@ -1,8 +1,7 @@
-import { text, bigint, integer, boolean, doublePrecision, timestamp, index, unique, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, integer, boolean, doublePrecision, timestamp, index, unique } from "drizzle-orm/pg-core";
+import { createTable } from "../utils";
 
 // VARIANT REFACTORING PLAN
-
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
 
 // Step 1: Keep existing productVariant table but add new fields
 export const productVariantEnhanced = createTable("product_variant", {

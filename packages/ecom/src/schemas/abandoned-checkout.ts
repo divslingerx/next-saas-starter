@@ -4,16 +4,13 @@ import {
   doublePrecision,
   foreignKey,
   integer,
-  pgTableCreator,
   primaryKey,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod/v4";
-
-// Create table with prefix
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
+import { createTable } from "../utils";
 
 // Main abandoned checkout table
 export const abandonedCheckout = createTable(

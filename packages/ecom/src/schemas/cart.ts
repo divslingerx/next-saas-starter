@@ -1,8 +1,7 @@
-import { text, bigint, boolean, doublePrecision, timestamp, integer, index, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, boolean, doublePrecision, timestamp, integer, index } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-// Create table with prefix
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
+import { createTable } from "../utils";
 
 // Active cart table
 export const cart = createTable("cart", {

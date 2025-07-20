@@ -10,7 +10,7 @@ services:
       # DATABASE_URL format: postgresql://USER:PASSWORD@HOST:PORT/DATABASE
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: DSm3bB27AXzlznDA
-      POSTGRES_DB: agency-app
+      POSTGRES_DB: app
     ports:
       - "5432:5432"
     volumes:

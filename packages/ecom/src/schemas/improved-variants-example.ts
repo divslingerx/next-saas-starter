@@ -1,8 +1,7 @@
-import { text, bigint, integer, boolean, doublePrecision, index, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, integer, boolean, doublePrecision, index } from "drizzle-orm/pg-core";
+import { createTable } from "../utils";
 
 // Example of improved variant system
-
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
 
 // Product option types (Size, Color, Material, etc.)
 export const productOptionType = createTable("product_option_type", {

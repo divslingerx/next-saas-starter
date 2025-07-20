@@ -1,9 +1,7 @@
-import { text, bigint, boolean, doublePrecision, timestamp, index, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, boolean, doublePrecision, timestamp, index } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
-
-// Create table with prefix
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
+import { createTable } from "../utils";
 
 // Price rule table
 export const priceRule = createTable("price_rule", {

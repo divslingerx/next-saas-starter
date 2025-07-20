@@ -1,8 +1,7 @@
-import { text, bigint, doublePrecision, timestamp, integer, index, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, doublePrecision, timestamp, integer, index } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-// Create table with prefix
-export const createTable = pgTableCreator((name) => `agency-app_${name}`);
+import { createTable } from "../utils";
 
 // Stock movement/adjustment history
 export const stockMovement = createTable("stock_movement", {
