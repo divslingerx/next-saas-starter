@@ -28,6 +28,6 @@ export type {
   Organization,
   PersonOrganization,
   ObjectDefinition,
-  ObjectRecord,
-  ObjectProperty,
+  Record,
+  PropertyDefinition,
 } from './core';

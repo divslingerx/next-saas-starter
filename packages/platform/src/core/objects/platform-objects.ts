@@ -69,13 +69,13 @@ export const objectDefinition = createTable(
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
   },
-  (table) => ({
-    orgIdx: index("obj_def_org_idx").on(table.organizationId),
-    nameIdx: index("obj_def_name_idx").on(table.name),
-    internalNameIdx: unique("obj_def_internal_name_idx").on(table.internalName),
-    systemIdx: index("obj_def_system_idx").on(table.isSystem),
-    activeIdx: index("obj_def_active_idx").on(table.isActive),
-  })
+  (table) => ([
+    index("obj_def_org_idx").on(table.organizationId),
+    index("obj_def_name_idx").on(table.name),
+    unique("obj_def_internal_name_idx").on(table.internalName),
+    index("obj_def_system_idx").on(table.isSystem),
+    index("obj_def_active_idx").on(table.isActive),
+  ])
 );
 
 /**
@@ -167,40 +167,40 @@ export const record = createTable(
     updatedById: bigint("updated_by_id", { mode: "number" })
       .references(() => person.id, { onDelete: "set null" }),
   },
-  (table) => ({
+  (table) => ([
     // Core indexes
-    uidIdx: index("record_uid_idx").on(table.uid),
-    orgObjectIdx: index("record_org_object_idx").on(table.organizationId, table.objectDefinitionId),
+    index("record_uid_idx").on(table.uid),
+    index("record_org_object_idx").on(table.organizationId, table.objectDefinitionId),
     
     // Reference indexes
-    personIdx: index("record_person_idx").on(table.personId),
-    relatedOrgIdx: index("record_related_org_idx").on(table.relatedOrganizationId),
-    ownerIdx: index("record_owner_idx").on(table.ownerId),
+    index("record_person_idx").on(table.personId),
+    index("record_related_org_idx").on(table.relatedOrganizationId),
+    index("record_owner_idx").on(table.ownerId),
     
     // Number index
-    recordNumberIdx: index("record_number_idx").on(table.organizationId, table.recordNumber),
+    index("record_number_idx").on(table.organizationId, table.recordNumber),
     
     // Status indexes
-    statusIdx: index("record_status_idx").on(table.status),
-    stageIdx: index("record_stage_idx").on(table.stage),
-    priorityIdx: index("record_priority_idx").on(table.priority),
+    index("record_status_idx").on(table.status),
+    index("record_stage_idx").on(table.stage),
+    index("record_priority_idx").on(table.priority),
     
     // Date indexes
-    dueDateIdx: index("record_due_date_idx").on(table.dueDate),
-    lastActivityIdx: index("record_last_activity_idx").on(table.lastActivityAt),
+    index("record_due_date_idx").on(table.dueDate),
+    index("record_last_activity_idx").on(table.lastActivityAt),
     
     // Archive index
-    archivedIdx: index("record_archived_idx").on(table.isArchived),
+    index("record_archived_idx").on(table.isArchived),
     
     // JSONB index for properties
-    propertiesIdx: index("record_properties_gin_idx").using("gin", table.properties),
+    index("record_properties_gin_idx").using("gin", table.properties),
     
     // Full-text search
-    searchIdx: index("record_search_idx").on(table.searchText),
+    index("record_search_idx").on(table.searchText),
     
     // External reference
-    externalIdx: index("record_external_idx").on(table.externalSource, table.externalId),
-  })
+    index("record_external_idx").on(table.externalSource, table.externalId),
+  ])
 );
 
 /**
@@ -242,15 +242,15 @@ export const association = createTable(
     createdById: bigint("created_by_id", { mode: "number" })
       .references(() => person.id, { onDelete: "set null" }),
   },
-  (table) => ({
-    orgIdx: index("assoc_org_idx").on(table.organizationId),
-    fromIdx: index("assoc_from_idx").on(table.fromEntityType, table.fromEntityId),
-    toIdx: index("assoc_to_idx").on(table.toEntityType, table.toEntityId),
-    typeIdx: index("assoc_type_idx").on(table.associationType),
-    primaryIdx: index("assoc_primary_idx").on(table.isPrimary),
+  (table) => ([
+    index("assoc_org_idx").on(table.organizationId),
+    index("assoc_from_idx").on(table.fromEntityType, table.fromEntityId),
+    index("assoc_to_idx").on(table.toEntityType, table.toEntityId),
+    index("assoc_type_idx").on(table.associationType),
+    index("assoc_primary_idx").on(table.isPrimary),
     
     // Unique constraint to prevent duplicate associations
-    uniqueAssoc: unique("assoc_unique").on(
+    unique("assoc_unique").on(
       table.organizationId,
       table.fromEntityType,
       table.fromEntityId,
@@ -258,7 +258,7 @@ export const association = createTable(
       table.toEntityId,
       table.associationType
     ),
-  })
+  ])
 );
 
 /**
@@ -308,12 +308,12 @@ export const propertyDefinition = createTable(
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
   },
-  (table) => ({
-    orgObjectIdx: index("prop_def_org_object_idx").on(table.organizationId, table.objectDefinitionId),
-    nameIdx: index("prop_def_name_idx").on(table.name),
-    typeIdx: index("prop_def_type_idx").on(table.type),
-    activeIdx: index("prop_def_active_idx").on(table.isActive),
-  })
+  (table) => ([
+    index("prop_def_org_object_idx").on(table.organizationId, table.objectDefinitionId),
+    index("prop_def_name_idx").on(table.name),
+    index("prop_def_type_idx").on(table.type),
+    index("prop_def_active_idx").on(table.isActive),
+  ])
 );
 
 // Type exports

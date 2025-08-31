@@ -9,7 +9,7 @@ import {
   type PropertyHistorySummary,
   type WorkflowPropertyTrigger
 } from '../history/property-history';
-import { objectRecord } from '../objects/platform-objects';
+import { record } from '../objects/platform-objects';
 
 export interface PropertyChange {
   propertyName: string;
@@ -244,7 +244,7 @@ export class PropertyHistoryService {
     // Get current value
     const currentRecord = await this.db
       .select()
-      .from(objectRecord)
+      .from(record)
       .where(eq(record.id, recordId))
       .limit(1);
 
@@ -276,9 +276,9 @@ export class PropertyHistoryService {
     };
 
     await this.db
-      .update(objectRecord)
+      .update(record)
       .set({ properties: updatedProperties })
-      .where(eq(objectRecord.id, recordId));
+      .where(eq(record.id, recordId));
 
     // Track the change
     const [newHistory] = await this.trackChanges(

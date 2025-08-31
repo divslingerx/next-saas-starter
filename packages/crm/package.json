@@ -18,12 +18,12 @@
   "dependencies": {
     "@charmlabs/db": "workspace:*",
     "@charmlabs/platform": "workspace:*",
-    "drizzle-orm": "catalog:",
+    "drizzle-orm": "^0.44.1",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "catalog:",
+    "@types/node": "^22.15.29",
     "typescript": "catalog:"
   }
 }

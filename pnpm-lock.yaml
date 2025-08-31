@@ -715,6 +715,31 @@ importers:
         specifier: ^5.8.2
         version: 5.8.3
 
+  packages/crm:
+    dependencies:
+      '@charmlabs/db':
+        specifier: workspace:*
+        version: link:../db
+      '@charmlabs/platform':
+        specifier: workspace:*
+        version: link:../platform
+      drizzle-orm:
+        specifier: ^0.44.1
+        version: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.49
+    devDependencies:
+      '@charmlabs/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      '@types/node':
+        specifier: ^22.15.29
+        version: 22.15.29
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
   packages/db:
     dependencies:
       '@vercel/postgres':
@@ -793,6 +818,74 @@ importers:
         version: 22.15.29
       typescript:
         specifier: ^5.8.2
+        version: 5.8.3
+
+  packages/email:
+    dependencies:
+      '@react-email/components':
+        specifier: 0.2.0
+        version: 0.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      nodemailer:
+        specifier: ^7.0.5
+        version: 7.0.5
+      react:
+        specifier: catalog:react19
+        version: 19.0.0
+      react-dom:
+        specifier: catalog:react19
+        version: 19.0.0(react@19.0.0)
+      resend:
+        specifier: ^4.6.0
+        version: 4.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.49
+    devDependencies:
+      '@charmlabs/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@charmlabs/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@charmlabs/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      '@types/node':
+        specifier: ^22.15.29
+        version: 22.15.29
+      '@types/nodemailer':
+        specifier: ^6.4.17
+        version: 6.4.17
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
+  packages/marketing:
+    dependencies:
+      '@charmlabs/db':
+        specifier: workspace:*
+        version: link:../db
+      '@charmlabs/email':
+        specifier: workspace:*
+        version: link:../email
+      '@charmlabs/platform':
+        specifier: workspace:*
+        version: link:../platform
+      drizzle-orm:
+        specifier: ^0.44.1
+        version: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.49
+    devDependencies:
+      '@charmlabs/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      '@types/node':
+        specifier: ^22.15.29
+        version: 22.15.29
+      typescript:
+        specifier: 'catalog:'
         version: 5.8.3
 
   packages/platform:
@@ -12169,26 +12262,73 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
+  '@react-email/body@0.0.11(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/body@0.0.11(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/button@0.2.0(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/button@0.2.0(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/code-block@0.1.0(react@19.0.0)':
+    dependencies:
+      prismjs: 1.30.0
+      react: 19.0.0
 
   '@react-email/code-block@0.1.0(react@19.1.0)':
     dependencies:
       prismjs: 1.30.0
       react: 19.1.0
 
+  '@react-email/code-inline@0.0.5(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/code-inline@0.0.5(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/column@0.0.13(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/column@0.0.13(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/components@0.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@react-email/body': 0.0.11(react@19.0.0)
+      '@react-email/button': 0.2.0(react@19.0.0)
+      '@react-email/code-block': 0.1.0(react@19.0.0)
+      '@react-email/code-inline': 0.0.5(react@19.0.0)
+      '@react-email/column': 0.0.13(react@19.0.0)
+      '@react-email/container': 0.0.15(react@19.0.0)
+      '@react-email/font': 0.0.9(react@19.0.0)
+      '@react-email/head': 0.0.12(react@19.0.0)
+      '@react-email/heading': 0.0.15(react@19.0.0)
+      '@react-email/hr': 0.0.11(react@19.0.0)
+      '@react-email/html': 0.0.11(react@19.0.0)
+      '@react-email/img': 0.0.11(react@19.0.0)
+      '@react-email/link': 0.0.12(react@19.0.0)
+      '@react-email/markdown': 0.0.15(react@19.0.0)
+      '@react-email/preview': 0.0.13(react@19.0.0)
+      '@react-email/render': 1.1.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@react-email/row': 0.0.12(react@19.0.0)
+      '@react-email/section': 0.0.16(react@19.0.0)
+      '@react-email/tailwind': 1.1.0(react@19.0.0)
+      '@react-email/text': 0.1.5(react@19.0.0)
+      react: 19.0.0
+    transitivePeerDependencies:
+      - react-dom
 
   '@react-email/components@0.2.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -12216,46 +12356,95 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
+  '@react-email/container@0.0.15(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/container@0.0.15(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/font@0.0.9(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@react-email/font@0.0.9(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/head@0.0.12(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/head@0.0.12(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/heading@0.0.15(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@react-email/heading@0.0.15(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/hr@0.0.11(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/hr@0.0.11(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/html@0.0.11(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@react-email/html@0.0.11(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/img@0.0.11(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/img@0.0.11(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/link@0.0.12(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/link@0.0.12(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/markdown@0.0.15(react@19.0.0)':
+    dependencies:
+      md-to-react-email: 5.0.5(react@19.0.0)
+      react: 19.0.0
 
   '@react-email/markdown@0.0.15(react@19.1.0)':
     dependencies:
       md-to-react-email: 5.0.5(react@19.1.0)
       react: 19.1.0
 
+  '@react-email/preview@0.0.13(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/preview@0.0.13(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/render@1.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      html-to-text: 9.0.5
+      prettier: 3.5.3
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-promise-suspense: 0.3.4
 
   '@react-email/render@1.1.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -12263,6 +12452,14 @@ snapshots:
       prettier: 3.5.3
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+      react-promise-suspense: 0.3.4
+
+  '@react-email/render@1.1.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      html-to-text: 9.0.5
+      prettier: 3.5.3
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
       react-promise-suspense: 0.3.4
 
   '@react-email/render@1.1.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
@@ -12273,17 +12470,33 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       react-promise-suspense: 0.3.4
 
+  '@react-email/row@0.0.12(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/row@0.0.12(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/section@0.0.16(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@react-email/section@0.0.16(react@19.1.0)':
     dependencies:
       react: 19.1.0
 
+  '@react-email/tailwind@1.1.0(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+
   '@react-email/tailwind@1.1.0(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@react-email/text@0.1.5(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@react-email/text@0.1.5(react@19.1.0)':
     dependencies:
@@ -15986,6 +16199,11 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
+  md-to-react-email@5.0.5(react@19.0.0):
+    dependencies:
+      marked: 7.0.4
+      react: 19.0.0
+
   md-to-react-email@5.0.5(react@19.1.0):
     dependencies:
       marked: 7.0.4
@@ -17259,6 +17477,13 @@ snapshots:
       resolve: 1.7.1
 
   reselect@5.1.1: {}
+
+  resend@4.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@react-email/render': 1.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+    transitivePeerDependencies:
+      - react
+      - react-dom
 
   resend@4.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:

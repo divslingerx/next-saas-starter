@@ -2,7 +2,7 @@ import { pgTableCreator, text, bigint, timestamp, jsonb, index, uuid, numeric, b
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { organization } from "../identity/organization";
 import { person } from "../identity/person";
-import { objectRecord } from "../objects/platform-objects";
+import { record } from "../objects/platform-objects";
 
 export const createTable = pgTableCreator((name) => `agency-app_${name}`);
 
@@ -26,7 +26,7 @@ export const propertyHistory = createTable(
     // What changed
     recordId: bigint("record_id", { mode: "number" })
       .notNull()
-      .references(() => objectRecord.id, { onDelete: "cascade" }),
+      .references(() => record.id, { onDelete: "cascade" }),
     
     // The property that changed
     propertyName: text("property_name").notNull(),
@@ -131,7 +131,7 @@ export const propertyHistorySummary = createTable(
     
     recordId: bigint("record_id", { mode: "number" })
       .notNull()
-      .references(() => objectRecord.id, { onDelete: "cascade" }),
+      .references(() => record.id, { onDelete: "cascade" }),
     
     propertyName: text("property_name").notNull(),
     

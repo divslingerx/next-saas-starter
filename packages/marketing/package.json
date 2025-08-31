@@ -17,14 +17,14 @@
   },
   "dependencies": {
     "@charmlabs/db": "workspace:*",
-    "@charmlabs/platform": "workspace:*",
     "@charmlabs/email": "workspace:*",
-    "drizzle-orm": "catalog:",
+    "@charmlabs/platform": "workspace:*",
+    "drizzle-orm": "^0.44.1",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "catalog:",
+    "@types/node": "^22.15.29",
     "typescript": "catalog:"
   }
 }

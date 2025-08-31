@@ -7,8 +7,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./core": "./src/core/index.ts",
-    "./crm": "./src/crm/index.ts",
-    "./marketing": "./src/marketing/index.ts",
+    "./automation": "./src/automation/index.ts",
     "./services": "./src/core/services/index.ts",
     "./repositories": "./src/core/repositories/index.ts"
   },

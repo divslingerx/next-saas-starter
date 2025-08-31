@@ -1,4 +1,6 @@
 {
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true
+,
   "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css",
   "eslint.workingDirectories": [
     {
