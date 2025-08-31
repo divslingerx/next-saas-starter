@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "bun --watch run src/index.ts && tsc --watch"
+  },
+  "dependencies": {
+    "@hubspot/api-client": "^13.1.0",
+    "@tmcdm/auth": "workspace:*",
+    "@tmcdm/config": "workspace:*",
+    "@tmcdm/db": "workspace:*",
+    "@tmcdm/validators": "workspace:*",
+    "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
