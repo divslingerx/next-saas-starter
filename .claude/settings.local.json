@@ -15,7 +15,15 @@
       "Bash(./fix-broken-imports.sh:*)",
       "Bash(rm:*)",
       "Bash(pnpm dlx:*)",
-      "Bash(npm view:*)"
+      "Bash(npm view:*)",
+      "Bash(find:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm tsc:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm --filter @charmlabs/ecom exec tsc --noEmit --skipLibCheck)",
+      "Bash(for:*)",
+      "Bash(do)",
+      "Bash(done)"
     ]
   },
   "enableAllProjectMcpServers": true,

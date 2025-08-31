@@ -1,34 +1,27 @@
 # SHELL-002: Dynamic Route Registration
 
-## Story
+## Status: DEFERRED TO V2
+
+## Original Story
 **As a** plugin developer  
-**I want** to register API routes dynamically  
-**So that** plugins can expose their own endpoints
+**I want** to register routes dynamically  
+**So that** my plugin can expose new endpoints
 
-## Acceptance Criteria
-- [ ] Dynamic API route registration
-- [ ] Route conflict detection
-- [ ] Middleware support per route
-- [ ] Route documentation generation
-- [ ] Request/response validation
-- [ ] Rate limiting per plugin
+## Reason for Deferral
+This story is entirely dependent on the plugin system, which has been moved to V2. Next.js requires routes to be defined at build time, making dynamic route registration incompatible with the current architecture.
 
-## Technical Notes
-```typescript
-// Plugin defines routes
-export const api = {
-  'reviews.list': {
-    method: 'GET',
-    path: '/reviews',
-    handler: async (req, res) => {},
-    middleware: [authenticate],
-    schema: { query: z.object({...}) }
-  }
-}
-```
+## V1 Alternative
+For V1, all routes are defined statically:
+- API routes via tRPC routers in `/packages/api`
+- Page routes in `/apps/web/src/app`
+- Use feature flags to enable/disable functionality
+
+## Future Considerations
+If we implement plugins in V2:
+1. Build-time route generation from plugins
+2. Separate API service for dynamic endpoints
+3. Proxy pattern for plugin routes
 
 ## Dependencies
-- SHELL-001: Application Boot Sequence
-
-## Estimated Points
-5
+- CORE-001: Plugin Loader System (deferred)
+- CORE-002: Plugin Registry (deferred)

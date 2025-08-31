@@ -17,10 +17,11 @@
   "dependencies": {
     "@charmlabs/core": "workspace:*",
     "@charmlabs/db": "workspace:*",
+    "@charmlabs/platform": "workspace:*",
     "drizzle-orm": "^0.44.1",
     "drizzle-zod": "^0.8.2",
     "nanoid": "^5.0.9",
-    "zod": "^3.25.76"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@charmlabs/eslint-config": "workspace:*",

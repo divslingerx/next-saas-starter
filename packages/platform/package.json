@@ -1,0 +1,32 @@
+{
+  "name": "@charmlabs/platform",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./core": "./src/core/index.ts",
+    "./crm": "./src/crm/index.ts",
+    "./marketing": "./src/marketing/index.ts",
+    "./services": "./src/core/services/index.ts",
+    "./repositories": "./src/core/repositories/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@charmlabs/db": "workspace:*",
+    "drizzle-orm": "^0.44.1",
+    "drizzle-zod": "^0.8.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@charmlabs/eslint-config": "workspace:*",
+    "@charmlabs/prettier-config": "workspace:*",
+    "@charmlabs/tsconfig": "workspace:*",
+    "@types/node": "^22.15.29",
+    "typescript": "catalog:"
+  }
+}

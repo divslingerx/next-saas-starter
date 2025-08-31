@@ -1,36 +1,30 @@
 # ADMIN-002: UI Extension Points
 
-## Story
+## Status: DEFERRED TO V2
+
+## Original Story
 **As a** plugin developer  
 **I want** defined UI extension points  
 **So that** plugins can add UI components
 
-## Acceptance Criteria
-- [ ] Extension point component
-- [ ] Menu injection system
-- [ ] Page section extensions
-- [ ] Widget system
-- [ ] Tab injection
-- [ ] Action button injection
-- [ ] Modal/drawer system
+## Reason for Deferral
+This story is entirely dependent on the plugin system. Without runtime plugin loading, there's no need for dynamic UI extension points. All admin features will be built directly into the application for V1.
 
-## Technical Notes
-```typescript
-<ExtensionPoint 
-  id="product.edit.tabs" 
-  context={{ product }}
-/>
+## V1 Alternative
+For V1, all admin features are implemented directly:
+- Static menu items defined in code
+- All page sections known at build time
+- Feature flags for enabling/disabling sections
+- Direct component imports
 
-// Plugin registers:
-adminUI: {
-  extensions: {
-    'product.edit.tabs': ProductReviewsTab
-  }
-}
-```
+## Future Considerations
+If we implement plugins in V2:
+1. Component registry for UI extensions
+2. React lazy loading for plugin components
+3. Extension point provider pattern
+4. Plugin UI isolation (iframes or shadow DOM)
 
 ## Dependencies
-- ADMIN-001: Admin Shell Layout
-
-## Estimated Points
-5
+- CORE-001: Plugin Loader System (deferred)
+- CORE-002: Plugin Registry (deferred)
+- ADMIN-001: Admin Shell Layout (which works fine without this)
