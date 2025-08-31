@@ -1,10 +1,9 @@
-import baseConfig, { restrictEnvAccess } from "@charmlabs/eslint-config/base";
+import baseConfig from "@charmlabs/eslint-config/base";
 
 /** @type {import('typescript-eslint').Config} */
 export default [
   {
-    ignores: [],
+    ignores: ["dist/**"],
   },
   ...baseConfig,
-  ...restrictEnvAccess,
 ];

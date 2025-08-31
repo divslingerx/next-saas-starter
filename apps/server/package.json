@@ -8,12 +8,19 @@
     "dev": "bun --watch run src/index.ts && tsc --watch"
   },
   "dependencies": {
+    "@charmlabs/auth": "workspace:*",
+    "@charmlabs/core": "workspace:*",
+    "@charmlabs/crm": "workspace:*",
+    "@charmlabs/ecom": "workspace:*",
+    "@charmlabs/platform": "workspace:*",
+    "@charmlabs/validators": "workspace:*",
     "@hubspot/api-client": "^13.1.0",
-    "@tmcdm/auth": "workspace:*",
-    "@tmcdm/config": "workspace:*",
-    "@tmcdm/db": "workspace:*",
-    "@tmcdm/validators": "workspace:*",
-    "hono": "^4.7.11"
+    "better-auth": "^1.14.0",
+    "drizzle-orm": "^0.36.0",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.7.11",
+    "postgres": "^3.4.0",
+    "stripe": "^17.7.0"
   },
   "devDependencies": {
     "@types/bun": "latest"

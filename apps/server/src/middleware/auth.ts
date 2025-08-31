@@ -1,6 +1,7 @@
 import type { Context, Next } from "hono";
 import { getCookie } from "hono/cookie";
-import { auth } from "@tmcdm/auth/server";
+
+import { auth } from "@charmlabs/auth/server";
 
 export async function authMiddleware(c: Context, next: Next) {
   const session = await auth.api.getSession({

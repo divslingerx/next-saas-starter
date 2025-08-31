@@ -23,7 +23,8 @@
       "Bash(pnpm --filter @charmlabs/ecom exec tsc --noEmit --skipLibCheck)",
       "Bash(for:*)",
       "Bash(do)",
-      "Bash(done)"
+      "Bash(done)",
+      "mcp__sequential-thinking__sequentialthinking"
     ]
   },
   "enableAllProjectMcpServers": true,

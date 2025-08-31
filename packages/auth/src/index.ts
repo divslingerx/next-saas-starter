@@ -1,47 +1,18 @@
-import type { BetterAuthOptions } from "better-auth";
-import { expo } from "@better-auth/expo";
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { oAuthProxy } from "better-auth/plugins";
+/**
+ * @charmlabs/auth
+ * 
+ * Authentication utilities and OAuth provider integrations.
+ * Apps configure Better Auth directly but can use these helpers for common integrations.
+ */
 
-import { db } from "@charmlabs/db/client";
+// Provider Integrations
+export * from './providers/hubspot';
+// export * from './providers/shopify';
+// export * from './providers/spotify';
+// export * from './providers/stripe';
 
-export function initAuth(options: {
-  baseUrl: string;
-  productionUrl: string;
-  secret: string | undefined;
+// Common Types
+export * from './types';
 
-  discordClientId: string;
-  discordClientSecret: string;
-}) {
-  const config = {
-    database: drizzleAdapter(db, {
-      provider: "pg",
-    }),
-    baseURL: options.baseUrl,
-    secret: options.secret,
-    plugins: [
-      oAuthProxy({
-        /**
-         * Auto-inference blocked by https://github.com/better-auth/better-auth/pull/2891
-         */
-        currentURL: options.baseUrl,
-        productionURL: options.productionUrl,
-      }),
-      expo(),
-    ],
-    socialProviders: {
-      discord: {
-        clientId: options.discordClientId,
-        clientSecret: options.discordClientSecret,
-        redirectURI: `${options.productionUrl}/api/auth/callback/discord`,
-      },
-    },
-    trustedOrigins: ["expo://"],
-  } satisfies BetterAuthOptions;
-
-  return betterAuth(config);
-}
-
-export type Auth = ReturnType<typeof initAuth>;
-export type Session = Auth["$Infer"]["Session"];
+// Re-export useful Better Auth utilities for convenience
+export { genericOAuth } from 'better-auth/plugins';
