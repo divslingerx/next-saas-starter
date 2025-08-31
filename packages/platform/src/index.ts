@@ -14,9 +14,6 @@
 // Core exports (identity, objects, shared infrastructure)
 export * from './core';
 
-// Marketing exports (campaigns, automation)
-export * from './marketing';
-
 // Service layer exports
 export * from './core/services/platform.service';
 export * from './core/services/person.service';
