@@ -1,21 +1,22 @@
-import { betterAuth } from "better-auth";
-import {
-  bearer,
-  admin,
-  multiSession,
-  organization,
-  twoFactor,
-  oneTap,
-  oAuthProxy,
-  openAPI,
-  customSession,
-  passkey,
-} from "better-auth/plugins";
 import { stripe } from "@better-auth/stripe";
-import Stripe from "stripe";
+import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "./db";
+import {
+  admin,
+  bearer,
+  customSession,
+  multiSession,
+  oAuthProxy,
+  oneTap,
+  openAPI,
+  organization,
+  passkey,
+  twoFactor,
+} from "better-auth/plugins";
 import { Resend } from "resend";
+import Stripe from "stripe";
+
+import { db } from "./db";
 import { reactInvitationEmail } from "./email/invitation";
 import { reactResetPasswordEmail } from "./email/reset-password";
 import { reactVerificationEmail } from "./email/verification";
@@ -30,19 +31,19 @@ const to = process.env.TEST_EMAIL || ""; // For testing purposes
 // Initialize Stripe client if configured
 const stripeClient = process.env.STRIPE_SECRET_KEY
   ? new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: "2025-06-30.basil",
+      apiVersion: process.env.STRIPE_CLIENT_API_VERSION,
     })
   : undefined;
 
 // Define your subscription price IDs
 const STARTER_PRICE_ID = {
-  default: process.env.STRIPE_STARTER_PRICE_ID || "price_1QxWWtLUjnrYIrmleljPKszG",
-  annual: process.env.STRIPE_STARTER_ANNUAL_PRICE_ID || "price_1QxWYqLUjnrYIrmlonqPThVF",
+  default: process.env.STRIPE_STARTER_PRICE_ID_DEFAULT,
+  annual: STRIPE_STARTER_PRICE_ID_ANNUAL,
 };
 
 const PROFESSIONAL_PRICE_ID = {
-  default: process.env.STRIPE_PRO_PRICE_ID || "price_1QxWZ5LUjnrYIrml5Dnwnl0X",
-  annual: process.env.STRIPE_PRO_ANNUAL_PRICE_ID || "price_1QxWZTLUjnrYIrmlyJYpwyhz",
+  default: STRIPE_PROFESSIONAL_PRICE_ID_DEFAULT,
+  annual: STRIPE_PROFESSIONAL_PRICE_ID_ANNUAL,
 };
 
 /**
@@ -54,7 +55,7 @@ export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
   }),
-  
+
   // Email verification configuration
   emailVerification: {
     async sendVerificationEmail({ user, url }) {
@@ -106,7 +107,10 @@ export const auth = betterAuth({
   // Social providers - Only Google for now
   socialProviders: {
     google: {
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID || "",
+      clientId:
+        process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+        process.env.GOOGLE_CLIENT_ID ||
+        "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     },
   },
@@ -179,10 +183,12 @@ export const auth = betterAuth({
     bearer(),
 
     // Admin plugin (development only)
-    ...(process.env.NODE_ENV === "development" 
-      ? [admin({
-          adminUserIds: process.env.ADMIN_USER_IDS?.split(",") || [],
-        })] 
+    ...(process.env.NODE_ENV === "development"
+      ? [
+          admin({
+            adminUserIds: process.env.ADMIN_USER_IDS?.split(",") || [],
+          }),
+        ]
       : []),
 
     // Multi-session support
@@ -190,9 +196,11 @@ export const auth = betterAuth({
 
     // OAuth proxy for handling OAuth in development
     ...(process.env.NODE_ENV === "development"
-      ? [oAuthProxy({
-          currentURL: process.env.AUTH_BASE_URL || "http://localhost:4000",
-        })]
+      ? [
+          oAuthProxy({
+            currentURL: process.env.AUTH_BASE_URL || "http://localhost:4000",
+          }),
+        ]
       : []),
 
     // Google One Tap sign-in
@@ -212,32 +220,34 @@ export const auth = betterAuth({
 
     // Stripe integration (if configured)
     ...(stripeClient && process.env.STRIPE_WEBHOOK_SECRET
-      ? [stripe({
-          stripeClient: stripeClient,
-          stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
-          subscription: {
-            enabled: true,
-            plans: [
-              {
-                name: "Starter",
-                priceId: STARTER_PRICE_ID.default,
-                annualDiscountPriceId: STARTER_PRICE_ID.annual,
-                freeTrial: {
-                  days: 7,
+      ? [
+          stripe({
+            stripeClient: stripeClient,
+            stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+            subscription: {
+              enabled: true,
+              plans: [
+                {
+                  name: "Starter",
+                  priceId: STARTER_PRICE_ID.default,
+                  annualDiscountPriceId: STARTER_PRICE_ID.annual,
+                  freeTrial: {
+                    days: 7,
+                  },
                 },
-              },
-              {
-                name: "Professional",
-                priceId: PROFESSIONAL_PRICE_ID.default,
-                annualDiscountPriceId: PROFESSIONAL_PRICE_ID.annual,
-              },
-              {
-                name: "Enterprise",
-                // Custom pricing, no fixed price ID
-              },
-            ],
-          },
-        })]
+                {
+                  name: "Professional",
+                  priceId: PROFESSIONAL_PRICE_ID.default,
+                  annualDiscountPriceId: PROFESSIONAL_PRICE_ID.annual,
+                },
+                {
+                  name: "Enterprise",
+                  // Custom pricing, no fixed price ID
+                },
+              ],
+            },
+          }),
+        ]
       : []),
   ],
 
