@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
-import * as schema from "./schema";
+import { ecomSchema } from "@charmlabs/ecom";
 
 /**
  * Server app's database connection
@@ -31,4 +31,4 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // Create the Drizzle instance with your app's schema
-export const db = drizzle(conn, { schema });
+export const db = drizzle(conn, { ...ecomSchema });

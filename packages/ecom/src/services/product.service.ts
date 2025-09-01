@@ -6,13 +6,11 @@ import {
   productImage, 
   productOptions, 
   productOptionValues,
-  inventoryItem,
-  inventoryLevel,
   type Product,
   type ProductVariant,
   type ProductImage as ProductImageType,
-} from "../schemas/product";
-import * as schema from "../schemas";
+} from "../core/schemas/product";
+import * as schema from "../schema";
 
 export interface CreateProductDTO {
   title: string;

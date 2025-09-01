@@ -1,4 +1,4 @@
-import { text, bigint, timestamp, jsonb, index, pgTableCreator } from "drizzle-orm/pg-core";
+import { text, bigint, timestamp, jsonb, index, pgTableCreator, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 

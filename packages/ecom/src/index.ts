@@ -4,34 +4,37 @@
  */
 
 // Core domain - products, inventory, collections
-export * from './core';
+export * from "./core";
 
-// Customer domain - profiles, groups, addresses  
-export * from './customer';
+// Customer domain - profiles, groups, addresses
+export * from "./customer";
 
 // Order domain - cart, checkout, orders
-export * from './order';
+export * from "./order";
 
 // Fulfillment domain - shipping, locations, fulfillment
-export * from './fulfillment';
+export * from "./fulfillment";
 
 // Payment domain - transactions, refunds, disputes
-export * from './payment';
+export * from "./payment";
 
 // B2B domain - companies, price lists, purchase orders
-export * from './b2b';
+export * from "./b2b";
 
 // Marketing domain - campaigns, abandoned carts, notifications
-export * from './marketing';
+export * from "./marketing";
 
 // Configuration domain - shop settings, feature flags, countries
-export * from './config';
+export * from "./config";
 
 // Shared utilities and normalized schemas
-export * from './shared';
+export * from "./shared";
 
 // Export services
-export * from './services';
+export * from "./services";
 
 // Export types
-export * from './types';
+export * from "./types";
+
+// Export unified schema - all tables in one import
+export * as ecomSchema from "./all-schemas";
