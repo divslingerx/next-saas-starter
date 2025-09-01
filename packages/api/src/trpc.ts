@@ -12,7 +12,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import { auth } from "@charmlabs/core";
-import { db } from "@charmlabs/db";
+import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 /**
  * 1. CONTEXT
@@ -26,13 +26,16 @@ import { db } from "@charmlabs/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+export const createTRPCContext = async (opts: { 
+  headers: Headers;
+  db: PostgresJsDatabase<any>;
+}) => {
   const session = await auth.api.getSession({
     headers: opts.headers,
   });
 
   return {
-    db,
+    db: opts.db,
     session,
     ...opts,
   };

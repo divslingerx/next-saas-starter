@@ -1,0 +1,38 @@
+{
+  "name": "@charmlabs/{{ name }}",
+  "version": "0.0.0",
+  "private": true,
+  "description": "{{ description }}",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist .turbo node_modules",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"{{#if includeTests}},
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"{{/if}}
+  },
+  "devDependencies": {
+    "@charmlabs/eslint-config": "workspace:*",
+    "@charmlabs/prettier-config": "workspace:*",
+    "@charmlabs/typescript-config": "workspace:*",
+    "@types/node": "catalog:default",
+    "eslint": "catalog:default",
+    "prettier": "catalog:default",
+    "typescript": "catalog:default"{{#if includeTests}},
+    "@vitest/ui": "catalog:default",
+    "vitest": "catalog:default"{{/if}}
+  },
+  "prettier": "@charmlabs/prettier-config"
+}

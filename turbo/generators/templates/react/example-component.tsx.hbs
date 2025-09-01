@@ -1,0 +1,67 @@
+import React from 'react';
+{{#if (eq styling 'css-modules')}}
+import styles from './example.module.css';
+{{/if}}
+
+export interface ExampleComponentProps {
+  /**
+   * The title to display
+   */
+  title: string;
+  /**
+   * Optional description text
+   */
+  description?: string;
+  /**
+   * Click handler
+   */
+  onClick?: () => void;
+  /**
+   * Component children
+   */
+  children?: React.ReactNode;
+}
+
+/**
+ * An example React component
+ * 
+ * @example
+ * ```tsx
+ * <ExampleComponent title="Hello World" description="This is an example" />
+ * ```
+ */
+export const ExampleComponent: React.FC<ExampleComponentProps> = ({
+  title,
+  description,
+  onClick,
+  children,
+}) => {
+  return (
+    <div {{#if (eq styling 'tailwind')}}className="p-4 border border-gray-200 rounded-lg"{{else if (eq styling 'css-modules')}}className={styles.container}{{/if}}>
+      <h2 {{#if (eq styling 'tailwind')}}className="text-xl font-bold mb-2"{{else if (eq styling 'css-modules')}}className={styles.title}{{/if}}>
+        {title}
+      </h2>
+      {description && (
+        <p {{#if (eq styling 'tailwind')}}className="text-gray-600 mb-4"{{else if (eq styling 'css-modules')}}className={styles.description}{{/if}}>
+          {description}
+        </p>
+      )}
+      {children && (
+        <div {{#if (eq styling 'tailwind')}}className="mt-4"{{else if (eq styling 'css-modules')}}className={styles.content}{{/if}}>
+          {children}
+        </div>
+      )}
+      {onClick && (
+        <button
+          onClick={onClick}
+          {{#if (eq styling 'tailwind')}}className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"{{else if (eq styling 'css-modules')}}className={styles.button}{{/if}}
+        >
+          Click Me
+        </button>
+      )}
+    </div>
+  );
+};
+
+// Export as default as well for convenience
+export default ExampleComponent;

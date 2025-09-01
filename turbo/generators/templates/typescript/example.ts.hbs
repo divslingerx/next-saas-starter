@@ -1,0 +1,36 @@
+/**
+ * Example function to demonstrate package structure
+ * @param name - The name to greet
+ * @returns A greeting message
+ */
+export function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+/**
+ * Example async function
+ * @param delay - Delay in milliseconds
+ * @returns A promise that resolves after the delay
+ */
+export async function wait(delay: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+}
+
+/**
+ * Example class
+ */
+export class Example {
+  private value: string;
+
+  constructor(initialValue: string) {
+    this.value = initialValue;
+  }
+
+  getValue(): string {
+    return this.value;
+  }
+
+  setValue(newValue: string): void {
+    this.value = newValue;
+  }
+}

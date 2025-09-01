@@ -1,0 +1,75 @@
+/**
+ * Service implementation for @charmlabs/{{ name }}
+ */
+
+import type { ServiceConfig, ServiceStatus } from './types';
+
+/**
+ * Main service class
+ */
+export class {{ pascalCase name }}Service {
+  private config: ServiceConfig;
+  private status: ServiceStatus = 'idle' as ServiceStatus;
+
+  constructor(config: ServiceConfig) {
+    this.config = config;
+  }
+
+  /**
+   * Start the service
+   */
+  async start(): Promise<void> {
+    if (this.status === 'running' as ServiceStatus) {
+      throw new Error('Service is already running');
+    }
+
+    this.status = 'running' as ServiceStatus;
+    console.log(`Starting ${this.config.name} service v${this.config.version}`);
+    
+    // Initialize service components
+    await this.initialize();
+  }
+
+  /**
+   * Stop the service
+   */
+  async stop(): Promise<void> {
+    if (this.status !== 'running' as ServiceStatus) {
+      throw new Error('Service is not running');
+    }
+
+    this.status = 'stopped' as ServiceStatus;
+    console.log(`Stopping ${this.config.name} service`);
+    
+    // Cleanup resources
+    await this.cleanup();
+  }
+
+  /**
+   * Get the current service status
+   */
+  getStatus(): ServiceStatus {
+    return this.status;
+  }
+
+  /**
+   * Initialize service components
+   */
+  private async initialize(): Promise<void> {
+    // Add initialization logic here
+  }
+
+  /**
+   * Cleanup service resources
+   */
+  private async cleanup(): Promise<void> {
+    // Add cleanup logic here
+  }
+}
+
+/**
+ * Factory function to create a service instance
+ */
+export function createService(config: ServiceConfig): {{ pascalCase name }}Service {
+  return new {{ pascalCase name }}Service(config);
+}

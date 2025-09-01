@@ -5,7 +5,6 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "../trpc";
-import { posts } from "@charmlabs/db";
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
@@ -16,21 +15,24 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
+  // Example procedures - apps should implement their own database logic
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.db.insert(posts).values({
-        name: input.name,
-        createdById: ctx.session.user.id,
-      });
+      // This is just an example - actual implementation would depend on the app's schema
+      console.log(`Creating post: ${input.name} by user ${ctx.session.user.id}`);
+      // Apps using this would implement their own database logic
+      return { success: true, name: input.name };
     }),
 
   getLatest: protectedProcedure.query(async ({ ctx }) => {
-    const post = await ctx.db.query.posts.findFirst({
-      orderBy: (posts, { desc }) => [desc(posts.createdAt)],
-    });
-
-    return post ?? null;
+    // Example response - apps would query their own database
+    return {
+      id: 1,
+      name: "Example Post",
+      createdById: ctx.session.user.id,
+      createdAt: new Date(),
+    };
   }),
 
   getSecretMessage: protectedProcedure.query(() => {

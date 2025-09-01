@@ -1,0 +1,33 @@
+/**
+ * @charmlabs/{{ name }}
+ * {{ description }}
+ */
+
+{{#if (eq packageType 'library')}}
+// Export main functionality
+export * from './lib';
+
+// Export types
+export * from './types';
+
+// Export utilities
+export * from './utils';
+{{else if (eq packageType 'utility')}}
+// Export utilities
+export * from './utils';
+
+// Export types
+export * from './types';
+{{else if (eq packageType 'service')}}
+// Export services
+export * from './services';
+
+// Export types
+export * from './types';
+
+// Export configuration
+export * from './config';
+{{else}}
+// Export all modules
+export * from './example';
+{{/if}}

@@ -1,0 +1,84 @@
+/**
+ * Type definitions for @charmlabs/{{ name }}
+ */
+
+{{#if (eq packageType 'library')}}
+/**
+ * Configuration options for the library
+ */
+export interface Config {
+  /**
+   * Enable debug logging
+   */
+  debug?: boolean;
+  /**
+   * API endpoint URL
+   */
+  apiUrl?: string;
+  /**
+   * Request timeout in milliseconds
+   */
+  timeout?: number;
+}
+
+/**
+ * Response from the library
+ */
+export interface Response<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: Error;
+}
+{{else if (eq packageType 'service')}}
+/**
+ * Service configuration
+ */
+export interface ServiceConfig {
+  /**
+   * Service name
+   */
+  name: string;
+  /**
+   * Service version
+   */
+  version: string;
+  /**
+   * Service options
+   */
+  options?: Record<string, unknown>;
+}
+
+/**
+ * Service status
+ */
+export enum ServiceStatus {
+  IDLE = 'idle',
+  RUNNING = 'running',
+  STOPPED = 'stopped',
+  ERROR = 'error',
+}
+{{else}}
+/**
+ * Example type definition
+ */
+export interface ExampleType {
+  id: string;
+  name: string;
+  description?: string;
+  metadata?: Record<string, unknown>;
+}
+{{/if}}
+
+/**
+ * Common error type
+ */
+export class {{ pascalCase name }}Error extends Error {
+  constructor(
+    message: string,
+    public readonly code?: string,
+    public readonly details?: unknown
+  ) {
+    super(message);
+    this.name = '{{ pascalCase name }}Error';
+  }
+}

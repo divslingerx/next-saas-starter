@@ -16,18 +16,17 @@
   },
   "dependencies": {
     "@charmlabs/core": "workspace:*",
-    "@charmlabs/db": "workspace:*",
     "@charmlabs/platform": "workspace:*",
-    "drizzle-orm": "^0.44.1",
-    "drizzle-zod": "^0.8.2",
+    "drizzle-orm": "catalog:default",
+    "drizzle-zod": "catalog:default",
     "nanoid": "^5.0.9",
-    "zod": "catalog:"
+    "zod": "catalog:default"
   },
   "devDependencies": {
     "@charmlabs/eslint-config": "workspace:*",
     "@charmlabs/prettier-config": "workspace:*",
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.15.29",
-    "typescript": "^5.8.2"
+    "@types/node": "catalog:default",
+    "typescript": "catalog:default"
   }
 }

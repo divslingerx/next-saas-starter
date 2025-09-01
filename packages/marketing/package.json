@@ -16,7 +16,6 @@
     "clean": "rm -rf .turbo dist node_modules"
   },
   "dependencies": {
-    "@charmlabs/db": "workspace:*",
     "@charmlabs/email": "workspace:*",
     "@charmlabs/platform": "workspace:*",
     "drizzle-orm": "^0.44.1",
@@ -24,7 +23,7 @@
   },
   "devDependencies": {
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.15.29",
+    "@types/node": "catalog:default",
     "typescript": "catalog:"
   }
 }

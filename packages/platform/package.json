@@ -16,16 +16,15 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@charmlabs/db": "workspace:*",
-    "drizzle-orm": "^0.44.1",
-    "drizzle-zod": "^0.8.2",
-    "zod": "catalog:"
+    "drizzle-orm": "catalog:default",
+    "drizzle-zod": "catalog:default",
+    "zod": "catalog:default"
   },
   "devDependencies": {
     "@charmlabs/eslint-config": "workspace:*",
     "@charmlabs/prettier-config": "workspace:*",
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.15.29",
-    "typescript": "catalog:"
+    "@types/node": "catalog:default",
+    "typescript": "catalog:default"
   }
 }

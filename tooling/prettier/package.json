@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.15.29",
+    "@types/node": "catalog:default",
     "typescript": "catalog:"
   },
   "prettier": "@charmlabs/prettier-config"

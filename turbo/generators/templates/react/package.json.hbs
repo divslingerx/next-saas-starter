@@ -1,0 +1,53 @@
+{
+  "name": "@charmlabs/{{ name }}",
+  "version": "0.1.0",
+  "private": true,
+  "description": "{{ description }}",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts", 
+      "default": "./src/components/index.ts"
+    }{{#if (eq styling 'tailwind')}},
+    "./styles.css": "./src/styles.css"{{/if}}
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src"{{#if includeStorybook}},
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"{{/if}}
+  },
+  "dependencies": {
+    "react": "catalog:react19"
+  },
+  "devDependencies": {
+    "@charmlabs/eslint-config": "workspace:*",
+    "@charmlabs/tsconfig": "workspace:*",
+    "@types/node": "catalog:default",
+    "@types/react": "catalog:react19",
+    "@types/react-dom": "catalog:react19",
+    "eslint": "catalog:default",
+    "typescript": "catalog:default"{{#if (eq styling 'tailwind')}},
+    "@charmlabs/tailwind-config": "workspace:*",
+    "tailwindcss": "catalog:default"{{/if}}{{#if includeStorybook}},
+    "@storybook/addon-essentials": "^8.5.0",
+    "@storybook/addon-interactions": "^8.5.0",
+    "@storybook/addon-links": "^8.5.0",
+    "@storybook/blocks": "^8.5.0",
+    "@storybook/react": "^8.5.0",
+    "@storybook/react-vite": "^8.5.0",
+    "@storybook/test": "^8.5.0",
+    "storybook": "^8.5.0"{{/if}}
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
+}

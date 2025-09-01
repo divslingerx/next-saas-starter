@@ -24,7 +24,8 @@
       "Bash(for:*)",
       "Bash(do)",
       "Bash(done)",
-      "mcp__sequential-thinking__sequentialthinking"
+      "mcp__sequential-thinking__sequentialthinking",
+      "WebFetch(domain:turbo.build)"
     ]
   },
   "enableAllProjectMcpServers": true,

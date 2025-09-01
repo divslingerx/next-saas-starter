@@ -1,0 +1,80 @@
+# @charmlabs/{{ name }}
+
+{{ description }}
+
+## Installation
+
+This package is part of the monorepo and can be used by other packages and apps within the workspace.
+
+```bash
+pnpm add @charmlabs/{{ name }}
+```
+
+## Usage
+
+```tsx
+import { ExampleComponent } from '@charmlabs/{{ name }}';
+{{#if (eq styling 'tailwind')}}
+// Don't forget to import the styles in your app
+import '@charmlabs/{{ name }}/styles.css';
+{{/if}}
+
+function App() {
+  return (
+    <ExampleComponent 
+      title="Hello World" 
+      description="This is an example component"
+    />
+  );
+}
+```
+
+## Development
+
+```bash
+# Start development mode
+pnpm dev
+
+# Build the package
+pnpm build
+
+# Run type checking
+pnpm typecheck
+
+# Run linting
+pnpm lint
+{{#if includeStorybook}}
+# Start Storybook
+pnpm storybook
+
+# Build Storybook
+pnpm build-storybook
+{{/if}}
+```
+
+## Components
+
+### ExampleComponent
+
+An example component to get you started.
+
+#### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| title | string | Yes | The title to display |
+| description | string | No | Optional description text |
+| onClick | () => void | No | Click handler |
+| children | React.ReactNode | No | Component children |
+
+## Adding New Components
+
+1. Create your component in `src/components/`
+2. Export it from `src/components/index.ts`
+3. Add any types to `src/types.ts`
+4. Document the component in this README
+{{#if includeStorybook}}5. Add a story in `src/stories/`{{/if}}
+
+## License
+
+MIT

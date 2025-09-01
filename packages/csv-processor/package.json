@@ -13,11 +13,11 @@
   "dependencies": {
     "csv-parse": "^5.6.0",
     "csv-stringify": "^6.6.0",
-    "papaparse": "^5.4.1"
+    "papaparse": "catalog:default"
   },
   "devDependencies": {
-    "@types/node": "^22.15.31",
+    "@types/node": "catalog:default",
     "@types/papaparse": "^5.3.14",
-    "typescript": "~5.7.3"
+    "typescript": "catalog:default"
   }
 }

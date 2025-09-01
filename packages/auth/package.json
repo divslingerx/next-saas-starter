@@ -27,12 +27,12 @@
   "devDependencies": {
     "@charmlabs/eslint-config": "workspace:*",
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.13.0",
+    "@types/node": "catalog:default",
     "eslint": "^9.17.0",
-    "typescript": "^5.8.3"
+    "typescript": "catalog:default"
   },
   "peerDependencies": {
-    "better-auth": "^1.14.0",
-    "hono": "^4.0.0"
+    "better-auth": "catalog:default",
+    "hono": "catalog:default"
   }
 }

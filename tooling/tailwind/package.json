@@ -23,7 +23,7 @@
     "@charmlabs/eslint-config": "workspace:*",
     "@charmlabs/prettier-config": "workspace:*",
     "@charmlabs/tsconfig": "workspace:*",
-    "@types/node": "^22.15.29",
+    "@types/node": "catalog:default",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

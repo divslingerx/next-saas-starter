@@ -1,0 +1,45 @@
+/**
+ * Configuration for @charmlabs/{{ name }}
+ */
+
+import type { ServiceConfig } from './types';
+
+/**
+ * Default configuration values
+ */
+export const defaultConfig: ServiceConfig = {
+  name: '{{ name }}',
+  version: '0.0.0',
+  options: {},
+};
+
+/**
+ * Merge user config with defaults
+ */
+export function mergeConfig(
+  userConfig: Partial<ServiceConfig>
+): ServiceConfig {
+  return {
+    ...defaultConfig,
+    ...userConfig,
+    options: {
+      ...defaultConfig.options,
+      ...userConfig.options,
+    },
+  };
+}
+
+/**
+ * Validate configuration
+ */
+export function validateConfig(config: ServiceConfig): void {
+  if (!config.name) {
+    throw new Error('Service name is required');
+  }
+  
+  if (!config.version) {
+    throw new Error('Service version is required');
+  }
+  
+  // Add more validation as needed
+}

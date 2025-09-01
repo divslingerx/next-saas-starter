@@ -1,0 +1,109 @@
+# @charmlabs/{{ name }}
+
+{{ description }}
+
+## Installation
+
+This package is part of the monorepo and can be used by other packages and apps within the workspace.
+
+```bash
+pnpm add @charmlabs/{{ name }}
+```
+
+## Usage
+
+```typescript
+import { greet } from '@charmlabs/{{ name }}';
+
+const message = greet('World');
+console.log(message); // "Hello, World!"
+```
+
+{{#if (eq packageType 'library')}}
+### Configuration
+
+```typescript
+import { Config } from '@charmlabs/{{ name }}';
+
+const config: Config = {
+  debug: true,
+  apiUrl: 'https://api.example.com',
+  timeout: 5000,
+};
+```
+{{else if (eq packageType 'service')}}
+### Service Setup
+
+```typescript
+import { ServiceConfig, ServiceStatus } from '@charmlabs/{{ name }}';
+
+const config: ServiceConfig = {
+  name: 'example-service',
+  version: '1.0.0',
+  options: {
+    // Service-specific options
+  },
+};
+```
+{{/if}}
+
+## Development
+
+```bash
+# Start development mode (watch for changes)
+pnpm dev
+
+# Build the package
+pnpm build
+
+# Run type checking
+pnpm typecheck
+
+# Run linting
+pnpm lint
+
+{{#if includeTests}}# Run tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:coverage
+{{/if}}
+```
+
+## API Reference
+
+### Functions
+
+#### `greet(name: string): string`
+
+Returns a greeting message.
+
+- `name` - The name to greet
+- Returns: A greeting string
+
+#### `wait(delay: number): Promise<void>`
+
+Waits for the specified delay.
+
+- `delay` - Delay in milliseconds
+- Returns: A promise that resolves after the delay
+
+### Classes
+
+#### `Example`
+
+A simple example class.
+
+**Constructor:**
+- `new Example(initialValue: string)` - Creates a new instance
+
+**Methods:**
+- `getValue(): string` - Gets the current value
+- `setValue(newValue: string): void` - Sets a new value
+
+## License
+
+MIT
